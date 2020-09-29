@@ -1,0 +1,43 @@
+#include "pch.h" 
+#include "conio.h" 
+#include "iostream" 
+
+int main() {
+	using namespace std;
+	setlocale(LC_ALL, "RU");
+	char C, y[3], x[4];
+	short i;
+
+	C = 'A';
+	cout << "Массив x:" << endl;
+	for (i = 0; i <= 4; i++) {
+		x[i] = C;
+		cout << x[i] << endl;
+		C++;
+	}
+	C = '0';
+	cout << "Массив y:" << endl;
+	for (i = 0; i <= 3; i++) {
+		y[i] = C;
+		cout << y[i] << endl;
+		C++;
+	}
+	_asm {
+		MOV AL, 3
+		LEA EBX, y
+		XLAT
+		MOV x, AL
+	}
+	cout << "Результат:" << endl;
+	cout << "Массив x:" << endl;
+	for (i = 0; i <= 4; i++) {
+		cout << x[i] << endl;
+	}
+	cout << "Массив y:" << endl;
+	for (i = 0; i <= 4; i++) {
+		cout << y[i] << endl;
+	}
+	system("pause");
+	return 0;
+	
+}

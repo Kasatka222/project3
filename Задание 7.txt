@@ -1,0 +1,31 @@
+//Обменять значения в переменных языка Паскаль x : integer и y : ^integer.
+//Обязательно использовать команду XCHG.
+#include "pch.h" 
+#include "conio.h" 
+#include "iostream" 
+
+int main() {
+	using namespace std;
+	setlocale(LC_ALL, "RU");
+	int y, x;
+	cout << "Введите число X: " << endl;
+	cin >> x;
+	cout << "Введите число Y: " << endl;
+	cin >> y;
+
+	_asm {
+		MOV EBX, x
+		MOV EDX, y
+		XCHG EBX,EDX
+		MOV x,EBX
+		mov y,EDX
+	}
+	cout << "Результат:" << endl;
+	cout << "Число x после преобразования x:" << endl;
+	cout << x << endl;
+	cout << "Число y после преобразования y:" << endl;
+	cout << y << endl;
+	system("pause");
+	return 0;
+
+}
